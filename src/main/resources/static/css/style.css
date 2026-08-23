@@ -1,0 +1,314 @@
+/* ============================================================
+   User directory — data console styling
+   IBM Plex Sans / Plex Mono, cool greys, single teal accent.
+   ============================================================ */
+
+:root {
+    --paper:  #F2F4F5;
+    --card:   #FFFFFF;
+    --ink:    #171A1C;
+    --muted:  #5A6469;
+    --rule:   #DDE2E4;
+    --accent: #00696E;
+    --accent-wash: #E4EFEF;
+    --danger: #A32B2B;
+    --danger-wash: #FBECEC;
+
+    --step: 0.5rem;
+    --radius: 4px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Layout ---------- */
+
+.shell {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: calc(var(--step) * 9) calc(var(--step) * 3) calc(var(--step) * 12);
+}
+
+.masthead {
+    margin-bottom: calc(var(--step) * 5);
+}
+
+.eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 calc(var(--step) * 1.5);
+}
+
+.masthead h1 {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.masthead p {
+    color: var(--muted);
+    margin: calc(var(--step) * 1) 0 0;
+}
+
+.panel {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+}
+
+/* ---------- Record list ---------- */
+
+.records {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.records li + li {
+    border-top: 1px solid var(--rule);
+}
+
+.record {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--step) * 2.5);
+    padding: calc(var(--step) * 2) calc(var(--step) * 2.5);
+    text-decoration: none;
+    color: inherit;
+    transition: background 120ms ease;
+}
+
+.record:hover,
+.record:focus-visible {
+    background: var(--accent-wash);
+}
+
+.record-key {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 12px;
+    color: var(--muted);
+    min-width: 3.5ch;
+    text-align: right;
+    flex-shrink: 0;
+    transition: color 120ms ease;
+}
+
+.record:hover .record-key,
+.record:focus-visible .record-key {
+    color: var(--accent);
+}
+
+.record-name {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 14px;
+}
+
+.empty {
+    padding: calc(var(--step) * 5) calc(var(--step) * 2.5);
+    text-align: center;
+    color: var(--muted);
+}
+
+/* ---------- Detail ---------- */
+
+.fields {
+    margin: 0;
+    padding: calc(var(--step) * 1);
+}
+
+.field-row {
+    display: flex;
+    gap: calc(var(--step) * 2);
+    padding: calc(var(--step) * 1.5) calc(var(--step) * 1.5);
+    align-items: baseline;
+}
+
+.field-row + .field-row {
+    border-top: 1px solid var(--rule);
+}
+
+.field-row dt {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    min-width: 11ch;
+    flex-shrink: 0;
+}
+
+.field-row dd {
+    margin: 0;
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.footnote {
+    color: var(--muted);
+    font-size: 13px;
+    margin: calc(var(--step) * 2) 0 0;
+}
+
+/* ---------- Form ---------- */
+
+.form-body {
+    padding: calc(var(--step) * 3);
+}
+
+.field {
+    margin-bottom: calc(var(--step) * 3);
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: calc(var(--step) * 0.75);
+}
+
+.field input {
+    width: 100%;
+    padding: calc(var(--step) * 1.25) calc(var(--step) * 1.5);
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    transition: border-color 120ms ease, background 120ms ease;
+}
+
+.field input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    background: var(--card);
+    border-color: transparent;
+}
+
+.hint {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: calc(var(--step) * 0.75);
+}
+
+.error {
+    display: block;
+    font-size: 12px;
+    color: var(--danger);
+    margin-top: calc(var(--step) * 0.75);
+}
+
+.field input.invalid {
+    border-color: var(--danger);
+    background: var(--danger-wash);
+}
+
+/* ---------- Actions ---------- */
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--step) * 2.5);
+    margin-top: calc(var(--step) * 4);
+}
+
+.btn {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: calc(var(--step) * 1.25) calc(var(--step) * 3);
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: opacity 120ms ease;
+}
+
+.btn:hover { opacity: 0.88; }
+
+.btn:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+.link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+}
+
+.link:hover { border-bottom-color: currentColor; }
+
+.link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: calc(var(--step) * 3);
+}
+
+.count {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* ---------- Notice ---------- */
+
+.notice {
+    padding: calc(var(--step) * 3);
+    border-left: 3px solid var(--danger);
+    background: var(--danger-wash);
+    border-radius: var(--radius);
+}
+
+.notice h2 {
+    margin: 0 0 calc(var(--step) * 1);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.notice p {
+    margin: 0;
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 13px;
+    color: var(--ink);
+}
+
+/* ---------- Responsive & motion ---------- */
+
+@media (max-width: 560px) {
+    .shell { padding: calc(var(--step) * 5) calc(var(--step) * 2) calc(var(--step) * 8); }
+    .masthead h1 { font-size: 24px; }
+    .field-row { flex-direction: column; gap: calc(var(--step) * 0.5); }
+    .field-row dt { min-width: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}
